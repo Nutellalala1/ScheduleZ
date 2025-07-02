@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Schedule Viewer</title>
+</head>
+<body>
+  <h1>Z's Schedule</h1>
+  <pre id="output">Loading...</pre>
+  <script>
+    fetch('schedule.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('output').textContent = 'Error loading JSON: ' + err;
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
