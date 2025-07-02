@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="header">
+            <h1>My Schedule Planner</h1>
+            <p>Organize your week with style</p>
+            <button class="mode-toggle" id="modeToggle">Switch to View Mode</button>
+        </div>
+
+        <div class="controls" id="controls">
+            <div class="control-group">
+                <input type="text" id="eventTitle" placeholder="Event title" />
+                <input type="date" id="eventDate" />
+                <input type="time" id="eventStartTime" />
+                <input type="time" id="eventEndTime" />
+                <input type="color" id="eventColor" value="#3498db" title="Event Color" />
+                <button class="btn" id="addEvent">Add Event</button>
+            </div>
+            
+            <div class="control-group">
+                <input type="text" id="ownerName" placeholder="Your name" />
+                <button class="btn" id="clearAll">Clear All Events</button>
+                <button class="btn" id="exportData">Export Schedule</button>
+                <input type="file" id="importData" accept=".json" style="display: none;" />
+                <button class="btn" id="importBtn">Import Schedule</button>
+            </div>
+
+            <div class="share-section">
+                <h4>GitHub Sharing Instructions</h4>
+                <p>1. Export your schedule using the "Export Schedule" button</p>
+                <p>2. Upload the exported JSON file to your GitHub repository</p>
+                <p>3. Share your GitHub Pages URL: <code>https://yourusername.github.io/your-repo/?data=schedule.json</code></p>
+                <div class="github-example">
+                    <strong>Example:</strong><br>
+                    <code>https://john.github.io/my-schedule/?data=my-schedule.json</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-grid">
+            <div class="week-header">
+                <div class="time-label">Time</div>
+                <div class="day-header">Monday</div>
+                <div class="day-header">Tuesday</div>
+                <div class="day-header">Wednesday</div>
+                <div class="day-header">Thursday</div>
+                <div class="day-header">Friday</div>
+                <div class="day-header">Saturday</div>
+                <div class="day-header">Sunday</div>
+            </div>
+            <div id="scheduleRows"></div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Event</h3>
+            </div>
+            <div class="form-group">
+                <label>Event Title</label>
+                <input type="text" id="modalEventTitle" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="modalEventDescription" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="modalEventDate" />
+            </div>
+            <div class="form-group">
+                <label>Start Time</label>
+                <input type="time" id="modalEventStartTime" />
+            </div>
+            <div class="form-group">
+                <label>End Time</label>
+                <input type="time" id="modalEventEndTime" />
+            </div>
+            <div class="form-group">
+                <label>Event Color</label>
+                <input type="color" id="modalEventColor" />
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                <button class="btn btn-danger" id="deleteEvent">Delete</button>
+                <button class="btn" id="saveEvent">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
